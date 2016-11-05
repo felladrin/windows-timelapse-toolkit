@@ -12,12 +12,15 @@ Windows toolkit for taking periodic screenshots and generate a time lapse video 
   - Take a screenshot every 30 seconds.
   - Create the timelapse videos displaying 10 screenshots per second.
   - Use [FFmpeg 'veryslow' preset](https://trac.ffmpeg.org/wiki/Encode/H.264#a2.Chooseapreset) to create videos with the smallest possible size.
+  - Hide output messages from FFmpeg while creating the videos.
+  - Use RBTray to allow minimizing the window to system tray.
 - That's it! You'll find your timelapses inside the '*videos*' folder.
 
 ### Third-party softwares used
 
 - [FFmpeg](https://github.com/FFmpeg/FFmpeg) (LGPL-licensed with optional components licensed under GPL)
 - [screenshot-cmd](https://code.google.com/archive/p/screenshot-cmd/) (New BSD License)
+- [RBTray](http://rbtray.sourceforge.net/) (GPL)
 
 ### Timelapse example on Youtube
 

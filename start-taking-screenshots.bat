@@ -1,24 +1,55 @@
 @ECHO off
-IF NOT EXIST %cd%\lib\screenshot-cmd.exe (
+
+IF NOT EXIST %cd%\tools\screenshot-cmd.exe (
 	ECHO Error: screenshot-cmd is missing.
 	ECHO Please, download the complete time lapse toolkit from here:
 	ECHO https://github.com/felladrin/windows-timelapse-toolkit/releases
-	ECHO Or download it from https://code.google.com/archive/p/screenshot-cmd and place a copy of 'screenshot-cmd.exe' in the folder %cd%\lib
+	ECHO Or download screenshot-cmd from https://code.google.com/archive/p/screenshot-cmd and place a copy of 'screenshot-cmd.exe' in the folder %cd%\tools
 	PAUSE
 	EXIT /b
 )
+
 IF NOT EXIST %cd%\screenshots MKDIR %cd%\screenshots
-FOR /F "tokens=*" %%I in (config.ini) DO SET %%I
+
+FOR /F "tokens=*" %%i IN (%cd%\config.ini) DO SET %%i
+
 FOR /f %%a IN ('WMIC OS GET LocalDateTime ^| FIND "."') DO SET DTS=%%a
 SET SessionId=%DTS:~0,4%-%DTS:~4,2%-%DTS:~6,2%_%DTS:~8,2%-%DTS:~10,2%-%DTS:~12,2%
+
 IF NOT EXIST %cd%\screenshots\%SessionId% MKDIR %cd%\screenshots\%SessionId%
+
 ECHO Started Taking Screenshots...
-ECHO A screenshot will be taken every %ScreenshotInterval% seconds and saved to the folder %cd%\screenshots\%SessionId%
+ECHO/
+ECHO A screenshot will be taken every %ScreenshotInterval% seconds and saved to the following folder:
+ECHO %cd%\screenshots\%SessionId%
+
+IF %UseRBTray%==true (
+	IF NOT EXIST %cd%\tools\RBTray.exe (
+		ECHO Error: RBTray is missing.
+		ECHO Please, download the complete time lapse toolkit from here:
+		ECHO https://github.com/felladrin/windows-timelapse-toolkit/releases
+		ECHO Or download RBTray from http://rbtray.sourceforge.net and place 'RBTray.exe' and 'RBHook.dll' in the folder %cd%\tools
+		PAUSE
+		EXIT /b
+	) ELSE (
+		TASKLIST /NH /FI "IMAGENAME eq RBTray.exe" | FIND /I "RBTray.exe" >NUL || START %cd%\tools\RBTray.exe
+		ECHO/
+		ECHO To hide this window to system tray press the minimize button with the RIGHT Mouse Button.
+	)
+)
+
 :loop
+
+TIMEOUT /nobreak /t %ScreenshotInterval%
+
 FOR /f %%a IN ('WMIC OS GET LocalDateTime ^| FIND "."') DO SET DTS=%%a
 SET DateTime=%DTS:~0,4%-%DTS:~4,2%-%DTS:~6,2%_%DTS:~8,2%-%DTS:~10,2%-%DTS:~12,2%
+
 SET ScreenshotPath=%cd%\screenshots\%SessionId%\%DateTime%.png
-%cd%\lib\screenshot-cmd.exe -o %ScreenshotPath%
+
+%cd%\tools\screenshot-cmd.exe -o %ScreenshotPath%
+
+ECHO/
 ECHO Screnshot Taken! (%ScreenshotPath%)
-TIMEOUT /nobreak /t %ScreenshotInterval%
+
 GOTO loop
