@@ -41,3 +41,11 @@ It's useful for those who want to keep a videolog of their actions on Windows al
 
 If you're using Windows 10 DPI Scaling, you might have screenshots capturing only part of your screen.  
 If this happens to you, please, use [Windows 10 DPI Fixer](http://windows10_dpi_blurry_fix.xpexplorer.com). You can set 125% DPI in this tool and still get 100% of the screen being captured by the screenshoter.
+
+## TODO
+
+Some features for next releases:
+
+- Release packages for both Windows 32-bit and 64-bit (Currently there's only for 32-bit)
+- Include option to add soundtrack to the timelapse video (ffmpeg can do this)
+- Add config option to allow deleting the screenshot sessions folders after compiling the videos
