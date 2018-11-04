@@ -45,9 +45,9 @@ TIMEOUT /nobreak /t %ScreenshotInterval%
 FOR /f %%a IN ('WMIC OS GET LocalDateTime ^| FIND "."') DO SET DTS=%%a
 SET DateTime=%DTS:~0,4%-%DTS:~4,2%-%DTS:~6,2%_%DTS:~8,2%-%DTS:~10,2%-%DTS:~12,2%
 
-SET ScreenshotPath=%cd%\screenshots\%SessionId%\%DateTime%.png
+SET ScreenshotPath=%cd%\screenshots\%SessionId%\%DateTime%.jpg
 
-%cd%\tools\screenshot-cmd.exe -o %ScreenshotPath%
+%cd%\tools\screenCapture.exe %ScreenshotPath%
 
 ECHO/
 ECHO Screnshot Taken! (%ScreenshotPath%)

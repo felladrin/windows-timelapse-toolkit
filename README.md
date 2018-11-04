@@ -4,7 +4,6 @@ Windows toolkit for taking periodic screenshots and generate a time lapse video 
 
 ### How to use
 
-- Download the latest release from https://github.com/felladrin/windows-timelapse-toolkit/releases/latest
 - Unzip the folder wherever you want. Screenshots and timelapse videos will be saved inside this folder.
 - Double-click '*start-taking-screenshots*'. Then press Ctrl+C when you want to finish taking screenshots.
 - Double-click '*create-timelapse-video*'. The more screenshots you have, the longer it'll take to create it.
@@ -19,8 +18,8 @@ Windows toolkit for taking periodic screenshots and generate a time lapse video 
 ### Third-party softwares used
 
 - [FFmpeg](https://github.com/FFmpeg/FFmpeg) (LGPL-licensed with optional components licensed under GPL)
-- [screenshot-cmd](https://code.google.com/archive/p/screenshot-cmd/) (New BSD License)
 - [RBTray](http://rbtray.sourceforge.net/) (GPL)
+- [screenCapture.bat (exe)](https://github.com/npocmaka/batch.scripts/blob/master/hybrids/.net/c/screenCapture.bat)
 
 ### Timelapse example on Youtube
 
@@ -36,11 +35,6 @@ Another way to access the the startup folder is through Windows Explorer: Just t
 
 Done. Next time you restart your computer, the screenshoter will be started automatically.  
 It's useful for those who want to keep a videolog of their actions on Windows along the day.
-
-## Note for Windows 10 users with High Definition Displays
-
-If you're using Windows 10 DPI Scaling, you might have screenshots capturing only part of your screen.  
-If this happens to you, please, use [Windows 10 DPI Fixer](http://windows10_dpi_blurry_fix.xpexplorer.com). You can set 125% DPI in this tool and still get 100% of the screen being captured by the screenshoter.
 
 ## TODO
 
