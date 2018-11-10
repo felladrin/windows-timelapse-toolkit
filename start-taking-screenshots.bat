@@ -1,14 +1,5 @@
 @ECHO off
 
-IF NOT EXIST %cd%\tools\screenshot-cmd.exe (
-	ECHO Error: screenshot-cmd is missing.
-	ECHO Please, download the complete time lapse toolkit from here:
-	ECHO https://github.com/felladrin/windows-timelapse-toolkit/releases
-	ECHO Or download screenshot-cmd from https://code.google.com/archive/p/screenshot-cmd and place a copy of 'screenshot-cmd.exe' in the folder %cd%\tools
-	PAUSE
-	EXIT /b
-)
-
 IF NOT EXIST %cd%\screenshots MKDIR %cd%\screenshots
 
 FOR /F "tokens=*" %%i IN (%cd%\config.ini) DO SET %%i
