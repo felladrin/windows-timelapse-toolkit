@@ -24,7 +24,7 @@ SET FFmpegLogLevel=info
 IF %OutputFFmpegLog%==false SET FFmpegLogLevel=fatal
 
 FOR /D %%G IN (screenshots\*) DO (
-	(FOR %%i in (%cd%\%%G\*.png) DO @ECHO file '%%i') > screenshots.txt
+	(FOR %%i in (%cd%\%%G\*.jpg) DO @ECHO file '%%i') > screenshots.txt
 
 	IF EXIST %cd%\videos\%%~nG.mp4 (
 		ECHO Timelapse video from session %%~nG already exists.
