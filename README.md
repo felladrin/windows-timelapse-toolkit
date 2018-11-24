@@ -35,11 +35,3 @@ Another way to access the the startup folder is through Windows Explorer: Just t
 
 Done. Next time you restart your computer, the screenshoter will be started automatically.  
 It's useful for those who want to keep a videolog of their actions on Windows along the day.
-
-## TODO
-
-Some features for next releases:
-
-- Release packages for both Windows 32-bit and 64-bit (Currently there's only for 32-bit)
-- Include option to add soundtrack to the timelapse video (ffmpeg can do this)
-- Add config option to allow deleting the screenshot sessions folders after compiling the videos
