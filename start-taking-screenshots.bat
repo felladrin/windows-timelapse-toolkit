@@ -29,6 +29,8 @@ IF %UseRBTray%==true (
 	)
 )
 
+SET /A Counter=0
+
 :loop
 
 TIMEOUT /nobreak /t %ScreenshotInterval%
@@ -36,7 +38,13 @@ TIMEOUT /nobreak /t %ScreenshotInterval%
 FOR /f %%a IN ('WMIC OS GET LocalDateTime ^| FIND "."') DO SET DTS=%%a
 SET DateTime=%DTS:~0,4%-%DTS:~4,2%-%DTS:~6,2%_%DTS:~8,2%-%DTS:~10,2%-%DTS:~12,2%
 
-SET ScreenshotPath=%cd%\screenshots\%SessionId%\%DateTime%.jpg
+set /A Counter+=1
+
+IF %UsePictureCounter%==true (
+	SET ScreenshotPath=%cd%\screenshots\%SessionId%\%Counter%.jpg
+) ELSE (
+	SET ScreenshotPath=%cd%\screenshots\%SessionId%\%DateTime%.jpg
+)
 
 %cd%\tools\screenCapture.exe %ScreenshotPath%
 
