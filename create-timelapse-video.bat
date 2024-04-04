@@ -1,10 +1,7 @@
 @ECHO off
 
 IF NOT EXIST %cd%\tools\ffmpeg.exe (
-	ECHO Error: FFmpeg is missing.
-	ECHO Please, download the complete time lapse toolkit from here:
-	ECHO https://github.com/felladrin/windows-timelapse-toolkit/releases
-	ECHO Or download FFmpeg from http://ffmpeg.org and place a copy of 'ffmpeg.exe' in the folder %cd%\tools
+	ECHO Download FFmpeg from http://ffmpeg.org and place a copy of 'ffmpeg.exe' in the folder %cd%\tools
 	PAUSE
 	EXIT /b
 )
