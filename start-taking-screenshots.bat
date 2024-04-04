@@ -15,9 +15,14 @@ ECHO A screenshot will be taken every %ScreenshotInterval% seconds and saved to 
 ECHO %cd%\screenshots\%SessionId%
 
 IF %UseRBTray%==true (
-	TASKLIST /NH /FI "IMAGENAME eq RBTray.exe" | FIND /I "RBTray.exe" >NUL || START %cd%\tools\RBTray.exe
-	ECHO/
-	ECHO To hide this window in the system tray press the minimize button with the RIGHT Mouse Button.
+	IF NOT EXIST %cd%\tools\RBTray.exe (
+		ECHO Info: RBTray is missing. If you want to be able to minimize this window to the system tray, please 
+		ECHO download RBTray from http://rbtray.sourceforge.net and place 'RBTray.exe' and 'RBHook.dll' in the folder %cd%\tools
+	) ELSE (
+		TASKLIST /NH /FI "IMAGENAME eq RBTray.exe" | FIND /I "RBTray.exe" >NUL || START %cd%\tools\RBTray.exe
+		ECHO/
+		ECHO To hide this window in the system tray press the minimize button with the RIGHT Mouse Button.
+	)
 )
 
 SET /A Counter=0
@@ -29,7 +34,7 @@ TIMEOUT /nobreak /t %ScreenshotInterval%
 FOR /f %%a IN ('WMIC OS GET LocalDateTime ^| FIND "."') DO SET DTS=%%a
 SET DateTime=%DTS:~0,4%-%DTS:~4,2%-%DTS:~6,2%_%DTS:~8,2%-%DTS:~10,2%-%DTS:~12,2%
 
-set /A Counter+=1
+SET /A Counter+=1
 
 IF %UsePictureCounter%==true (
 	SET ScreenshotPath=%cd%\screenshots\%SessionId%\%Counter%.jpg
@@ -37,6 +42,6 @@ IF %UsePictureCounter%==true (
 	SET ScreenshotPath=%cd%\screenshots\%SessionId%\%DateTime%.jpg
 )
 
-call %cd%\tools\screenCapture.bat %ScreenshotPath%
+CALL %cd%\tools\screenCapture.bat %ScreenshotPath%
 
 GOTO loop
