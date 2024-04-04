@@ -46,9 +46,6 @@ IF %UsePictureCounter%==true (
 	SET ScreenshotPath=%cd%\screenshots\%SessionId%\%DateTime%.jpg
 )
 
-%cd%\tools\screenCapture.exe %ScreenshotPath%
-
-ECHO/
-ECHO Screnshot Taken! (%ScreenshotPath%)
+call %cd%\tools\screenCapture.bat %ScreenshotPath%
 
 GOTO loop
