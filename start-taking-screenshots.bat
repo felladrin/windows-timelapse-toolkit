@@ -15,18 +15,9 @@ ECHO A screenshot will be taken every %ScreenshotInterval% seconds and saved to 
 ECHO %cd%\screenshots\%SessionId%
 
 IF %UseRBTray%==true (
-	IF NOT EXIST %cd%\tools\RBTray.exe (
-		ECHO Error: RBTray is missing.
-		ECHO Please, download the complete time lapse toolkit from here:
-		ECHO https://github.com/felladrin/windows-timelapse-toolkit/releases
-		ECHO Or download RBTray from http://rbtray.sourceforge.net and place 'RBTray.exe' and 'RBHook.dll' in the folder %cd%\tools
-		PAUSE
-		EXIT /b
-	) ELSE (
-		TASKLIST /NH /FI "IMAGENAME eq RBTray.exe" | FIND /I "RBTray.exe" >NUL || START %cd%\tools\RBTray.exe
-		ECHO/
-		ECHO To hide this window to system tray press the minimize button with the RIGHT Mouse Button.
-	)
+	TASKLIST /NH /FI "IMAGENAME eq RBTray.exe" | FIND /I "RBTray.exe" >NUL || START %cd%\tools\RBTray.exe
+	ECHO/
+	ECHO To hide this window in the system tray press the minimize button with the RIGHT Mouse Button.
 )
 
 SET /A Counter=0
