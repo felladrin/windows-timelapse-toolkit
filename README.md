@@ -2,21 +2,25 @@
 
 Windows toolkit for taking periodic screenshots and generating a time-lapse video from them.
 
+It's composed of batch scripts which you opren and easily customize.
+
 ### How to use
 
 - Download `windows-timelapse-toolkit` from here:  
 https://github.com/felladrin/windows-timelapse-toolkit/archive/refs/heads/windows-timelapse-toolkit.zip
-- Unzip it. Screenshots and timelapse videos will be saved inside this folder.
-- Double-click '*start-taking-screenshots*'. Then press Ctrl+C when you want to stop taking screenshots.
-- Double-click '*create-timelapse-video*'. The more screenshots you have, the longer it'll take to create it.
-- Optionally edit the '*config*' file to suit your needs. The default configuration is the following:
+- Unzip it.
+- Double-click `start-taking-screenshots`.
+  - Screenshots will be saved in a subfolder named `screenshots`.
+  - To stop taking screenshots, press Ctrl+C.
+- Double-click `create-timelapse-video`. The more screenshots you have, the longer it'll take to create it.
+- Optionally edit the `config` file to suit your needs. The default configuration is the following:
   - Takes a screenshot every 30 seconds.
   - Creates the timelapse videos displaying 10 screenshots per second.
   - Uses [FFmpeg 'veryslow' preset](https://trac.ffmpeg.org/wiki/Encode/H.264#a2.Chooseapresetandtune) to create videos with the smallest possible size.
   - Hides output messages from FFmpeg while creating the videos.
   - Uses RBTray to allow minimizing the window to the system tray.
-  - Uses a timestamp as the file name by default. Chanting `UsePictureCounter` to `true` will make the screenshots to be named with sequential numbers instead.
-- That's it! You'll find your timelapse inside the '*videos*' folder.
+  - Uses a timestamp as the file name by default. Changing `UsePictureCounter` to `true` will make the screenshots to be named with sequential numbers instead.
+- That's it! You'll find your timelapse inside the subfolder `videos`.
 
 ### Third-party software used
 
@@ -32,7 +36,7 @@ https://github.com/felladrin/windows-timelapse-toolkit/archive/refs/heads/window
 
 If you want it to start taking screenshots automatically as soon as you log in to Windows, do the following:
 
-Right-click '*start-taking-screenshots*' and select 'Create Shortcut'. A shortcut will be created in the same folder. Then rename it to whatever you want (Suggestion: 'AutoScreenshoter'), and drag and drop it to `Start Menu >> Programs >> Startup`.
+Right-click `start-taking-screenshots` and select 'Create Shortcut'. A shortcut will be created in the same folder. Then rename it to whatever you want (Suggestion: 'AutoScreenshoter'), and drag and drop it to `Start Menu >> Programs >> Startup`.
 
 Another way to access the startup folder is through Windows Explorer: Just type on the address bar: `%AppData%\Microsoft\Windows\Start Menu\Programs\Startup` - Then paste the shortcut there.
 
