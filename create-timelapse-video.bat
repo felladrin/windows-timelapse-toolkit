@@ -1,7 +1,7 @@
 @ECHO off
 
 IF NOT EXIST %cd%\tools\ffmpeg.exe (
-	ECHO Download FFmpeg from http://ffmpeg.org and place a copy of 'ffmpeg.exe' in the folder %cd%\tools
+	ECHO Error: FFmpeg is missing. Please download FFmpeg from http://ffmpeg.org and place a copy of 'ffmpeg.exe' in the folder %cd%\tools
 	PAUSE
 	EXIT /b
 )
