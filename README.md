@@ -6,8 +6,8 @@ It's composed of batch scripts which you can open in a text editor and easily cu
 
 ### How to use
 
-- Download `windows-timelapse-toolkit` from here:  
-https://github.com/felladrin/windows-timelapse-toolkit/archive/refs/heads/windows-timelapse-toolkit.zip
+- Download the latest version of `windows-timelapse-toolkit` from here:  
+https://github.com/felladrin/windows-timelapse-toolkit/archive/refs/heads/latest.zip
 - Unzip it and you'll see the these files:
   - <img width="164" alt="image" src="https://github.com/felladrin/windows-timelapse-toolkit/assets/418083/35dd4e2e-a2f7-4cf9-aec9-ed36c28a908a">
 - Optionally edit the `config` file to suit your needs. The default configuration is the following:
