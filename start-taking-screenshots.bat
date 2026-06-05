@@ -4,7 +4,7 @@ IF NOT EXIST %cd%\screenshots MKDIR %cd%\screenshots
 
 FOR /F "tokens=*" %%i IN (%cd%\config.ini) DO SET %%i
 
-FOR /f %%a IN ('WMIC OS GET LocalDateTime ^| FIND "."') DO SET DTS=%%a
+FOR /f %%a IN ('powershell -NoProfile -Command "Get-Date -Format yyyyMMddHHmmss"') DO SET DTS=%%a
 SET SessionId=%DTS:~0,4%-%DTS:~4,2%-%DTS:~6,2%_%DTS:~8,2%-%DTS:~10,2%-%DTS:~12,2%
 
 IF NOT EXIST %cd%\screenshots\%SessionId% MKDIR %cd%\screenshots\%SessionId%
@@ -31,7 +31,7 @@ SET /A Counter=0
 
 TIMEOUT /nobreak /t %ScreenshotInterval%
 
-FOR /f %%a IN ('WMIC OS GET LocalDateTime ^| FIND "."') DO SET DTS=%%a
+FOR /f %%a IN ('powershell -NoProfile -Command "Get-Date -Format yyyyMMddHHmmss"') DO SET DTS=%%a
 SET DateTime=%DTS:~0,4%-%DTS:~4,2%-%DTS:~6,2%_%DTS:~8,2%-%DTS:~10,2%-%DTS:~12,2%
 
 SET /A Counter+=1
